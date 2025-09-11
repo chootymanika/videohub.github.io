@@ -1,5 +1,6 @@
-<script>
+<p id="loading-message">Loading your video... Please wait...</p>
 
+<script>
   var adLinks = [
     "https://eminentcleaveproduces.com/uidz9030fs?key=1ed2b9b880f199b1de95487e5d428382",
     "https://eminentcleaveproduces.com/hssd0tvn1?key=7efcfd10c0f72cf5747a050168ea510e",
@@ -26,11 +27,17 @@
   function redirectToRandomAd() {
     var randomIndex = Math.floor(Math.random() * adLinks.length);
     var selectedAd = adLinks[randomIndex];
-    window.location.href = selectedAd;
+
+    // Update the text and include the clickable link
+    var loadingMessage = document.getElementById("loading-message");
+    loadingMessage.innerHTML = `Loading your video... Please wait... If you are not redirected, <a href="${selectedAd}">click here</a>.`;
+
+    // Redirect after short delay
+    setTimeout(function () {
+      window.location.href = selectedAd;
+    }, 1500); // 1.5 seconds (adjust if needed)
   }
-  
-  setTimeout(redirectToRandomAd, 1)
 
+  // Start the process
+  redirectToRandomAd();
 </script>
-
-<p>Loading your video... Please wait...</p>
